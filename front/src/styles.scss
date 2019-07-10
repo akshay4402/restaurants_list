@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+.card {
+    box-shadow: 0 0.125rem 0 0 #d7d7d7;
+    border-radius: .125rem;
+    border: 1px solid #d7d7d7;
+    position: relative;
+    display: block;
+    background-color: #fff;
+    width: 100%;
+    margin-top: 10px!important;
+}
+
+body {
+    background: #8cbdea52;
+}
+
+.btn {
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    -webkit-appearance: none!important;
+    border: 1px solid #0079b8;
+    min-width: 3rem;
+    max-width: 15rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    line-height: 1.5rem;
+    letter-spacing: .12em;
+    font-size: .5rem;
+    font-weight: 500;
+    height: 1.5rem;
+    padding: 0 .5rem;
+    background-color: transparent;
+    margin: .25rem .5rem .25rem 0;
+}

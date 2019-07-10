@@ -1,3 +1,11 @@
-<p>
-  create-restaurant works!
-</p>
+<div class="card">
+    <form [formGroup]="restaurantForm" (ngSubmit)="onFormSubmit(restaurantForm)">
+      <label>
+        Name:
+        <input type="text" formControlName="name">
+      </label>
+
+
+      <button type="submit" class="btn">ADD</button>
+    </form>
+</div>
