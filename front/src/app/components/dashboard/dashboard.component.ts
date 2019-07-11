@@ -8,10 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  count = '0';
 
   constructor(private appService: AppService, private router: Router) { }
 
   ngOnInit() {
+    this.appService.getCount().subscribe(val => {
+      this.count = val + '';
+    });
   }
 
   create() {

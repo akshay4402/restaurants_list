@@ -59,8 +59,8 @@ export class CreateRestaurantComponent implements OnInit {
       pForm.value['edit'] = true;
       pForm.value._id = this.id;
     }
-    console.log(pForm.value);
     this.appService.saveRestaurant(pForm.value).subscribe(val => {
+      // write notification here
     // if (val + '' === 'success') {
     //   this.toastr.info(`Restaurant Created successfully`, 'Success!');
     // } else {

@@ -17,6 +17,17 @@ export class AppService {
 
   constructor( public http: HttpClient) { }
 
+  getCount() {
+    return this.http.post(`${API}/count`, {})
+    .pipe(
+    switchMap((result: Response) => {
+        return of(result);
+    }), catchError((e: Error) => {
+      return of({type: 'ERROR', payload: e});
+    }
+    )
+    );
+  }
 
   deleteRestaurants(Pval) {
     return this.http.post(`${API}/deleteRestaurent`, Pval)

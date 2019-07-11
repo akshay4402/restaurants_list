@@ -9,5 +9,7 @@ router.post('/getRestaurentlist', resController.list);
 router.post('/addRestaurent', resController.add); 
 router.post('/editRestaurent', resController.editVal); 
 router.post('/deleteRestaurent', resController.delete); 
+router.post('/count', resController.count); 
+
 
 module.exports = router;

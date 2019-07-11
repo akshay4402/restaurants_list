@@ -60,7 +60,7 @@ export class ListRestaurantsComponent implements OnInit {
   delete(id) {
     this.appService.deleteRestaurants({id: id}).subscribe(val => {
       // write notifications here
-      console.log(val);
+      // console.log(val);
     });
     this.appService.getRestaurants().subscribe(val => {
       this.totalRestaurants = val;

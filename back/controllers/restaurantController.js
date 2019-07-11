@@ -20,8 +20,6 @@ exports.list = async function (req, res) {
 exports.add = async function (req, res) {
   try {
     if(req.body && req.body.edit ) {
-      console.log(req.body)
-      console.log(req.body._id)
       await restaurants.update({ _id : req.body._id }, { $set: {
         'address': req.body.address,
         'name': req.body.name,
@@ -62,6 +60,16 @@ exports.delete = async function (req, res) {
     await restaurants.remove({ _id : req.body.id});
     }
     res.json('success')
+  } catch(e) {
+    console.log(e);
+  }
+}
+
+
+exports.count = async function (req, res) {
+  try {
+    let c = await restaurants.count({});
+    res.json(c)
   } catch(e) {
     console.log(e);
   }
