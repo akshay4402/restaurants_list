@@ -1,0 +1,28 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  .footer{
+    height: 40px;
+    width: 75%;
+    margin: auto;
+    background: #fff;
+    border: 1px solid #000;
+  }
+
+  .dash {
+    width: 40%;
+    margin: auto;
+    margin-top: 100px !important;
+    padding: 30px;
+  }
+
+  .dash-head {
+    font-size: 22px;
+  }
+
+  .btn {
+    width: 100px;
+    font-weight: bold !important;
+  }

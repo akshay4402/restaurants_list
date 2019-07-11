@@ -1,3 +1,36 @@
-<p>
-  list-restaurants works!
-</p>
+<div class="buttons-div">
+  <button style="color: #000 !important;background: #b7b3b3 !important;" (click)='back()' class="btn"> Back </button>
+  <button style="float:right;width:100px;" class="btn" (click)='add()'> Add </button>
+</div>
+<div class="list-head">List Restaurants</div>
+<div class="">
+    <table>
+      <tr>
+        <th>No:</th>
+        <th>Name</th>
+        <th>Type</th> 
+        <th>Stars</th>
+        <th>Address</th>
+        <th>Telephone</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let res of totalRestaurants | paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
+        <td>{{(p-1)*10 + (1+i)}}</td>
+        <td>{{res.name | uppercase}}</td>
+        <td>{{getRestaurantTypes(res.type)}}</td>
+        <td>{{getStars(res.stars)}}</td>
+        <td>{{res.address.line1}}</td>
+        <td>{{res.address.telephone}}</td>
+        <td style="width: 50px;">
+            <div class="dropdown">
+                <button class="dropbtn">Options</button>
+                <div class="dropdown-content">
+                <a (click)="edit(res._id)">Edit</a>
+                <a (click)="delete(res._id)">Delete</a>
+                </div>
+              </div></td>
+      </tr>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+  </div>

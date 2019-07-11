@@ -21,9 +21,14 @@ export const ResRoutes = [
         component: CreateRestaurantComponent,
     },
     {
+        path: 'edit/:id',
+        component: CreateRestaurantComponent
+      },
+    {
         path: '**',
         component: PageNotFoundComponent,
     },
+
 
 ];
 

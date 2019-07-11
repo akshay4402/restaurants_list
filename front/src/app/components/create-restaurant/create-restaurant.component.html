@@ -1,11 +1,110 @@
-<div class="card">
-    <form [formGroup]="restaurantForm" (ngSubmit)="onFormSubmit(restaurantForm)">
-      <label>
-        Name:
-        <input type="text" formControlName="name">
-      </label>
-
-
-      <button type="submit" class="btn">ADD</button>
-    </form>
+<div class="row">
+    <div class="card col-md-6">
+        <div class="add-restaurent-head">Add Restaurant Details:</div>
+          <form [formGroup]="restaurantForm" (ngSubmit)="onFormSubmit(restaurantForm)">
+            <div class="row">
+              <div class="col-md-12"> 
+                <label class="has-float-label">
+                  <input type="text" placeholder="Restaurant Name" formControlName="name">
+                  <span>Restaurant Name</span>
+                </label>
+              </div>
+              <div class="col-md-12">Address</div>
+              <div formGroupName="address" class="col-md-6">
+                  <label class="has-float-label">
+                    <input type="text" placeholder="Line 1" formControlName="line1">
+                    <span>Line 1</span>
+                  </label>
+              </div>
+              <div formGroupName="address" class="col-md-6">
+                  <label class="has-float-label">
+                    <input type="text" placeholder="Line 2" formControlName="line2">
+                    <span>Line 2</span>
+                  </label>
+              </div>
+              <div formGroupName="address" class="col-md-6">
+                  <label class="has-float-label">
+                    <input type="text" placeholder="Street" formControlName="street">
+                    <span>Street</span>
+                  </label>
+              </div>        
+              <div formGroupName="address" class="col-md-6">
+                  <label class="has-float-label">
+                    <input type="text" placeholder="Postal Code" formControlName="postalCode">
+                    <span>Postal Code</span>
+                  </label>
+              </div>        
+              <div formGroupName="address" class="col-md-6">
+                  <label class="has-float-label">
+                    <input type="text" placeholder="City" formControlName="city">
+                    <span>City</span>
+                  </label>
+              </div>        
+              <div formGroupName="address" class="col-md-6">
+                  <label class="has-float-label">
+                    <input type="text" placeholder="State" formControlName="state">
+                    <span>State</span>
+                  </label>
+              </div>        
+              <div formGroupName="address" class="col-md-6">
+                  <label class="has-float-label">
+                    <input type="text" placeholder="Country" formControlName="country">
+                    <span>Country</span>
+                  </label>
+              </div>        
+              <div formGroupName="address" class="col-md-6">
+                  <label class="has-float-label">
+                    <input type="number" placeholder="Telephone" formControlName="telephone">
+                    <span>Telephone</span>
+                  </label>
+              </div>
+              <div formGroupName="address" class="col-md-6">
+                  <label class="has-float-label">
+                    <input type="number" placeholder="Fax" formControlName="fax">
+                    <span>Fax</span>
+                  </label>
+              </div>        
+              <div formGroupName="address" class="col-md-6">
+                  <label class="has-float-label">
+                    <input type="email" placeholder="Email" formControlName="email">
+                    <span>Email</span>
+                  </label>
+              </div>        
+              <div formGroupName="address" class="col-md-6">
+                  <label class="has-float-label">
+                    <input type="text" placeholder="Website" formControlName="website">
+                    <span>Website</span>
+                  </label>
+              </div>
+              <div style="margin-top: 13px;" class="col-md-12 row">
+                <span class="col-6 col-md-6 col-sm-6">Type:</span>
+                <select formControlName="type" class="col-6 col-md-6 col-sm-6" name="" id="">
+                  <option value="fast">Fast Casual</option>
+                  <option value="family">Family Style</option>
+                  <option value="fine">Fine Dining</option>
+                  <option value="cafe">Café or Bistro</option>
+                  <option value="truck"> Food Truck</option>
+                  <option value="buffet">Restaurant Buffet</option>
+                  <option value="pop">Pop Up Restaurant </option>
+                </select>
+              </div>
+              <div style="line-height: 44px;margin-top: 13px;" class="col-md-12 row"> 
+                  <span class="col-6 col-md-6 col-sm-6">Pure Vegetarian:</span>
+                  <input class="checkbox" type="checkbox" formControlName="vegOrNon">
+              </div>
+              <div style="margin-top: 13px;" class="col-md-12 row"> 
+                  <span class="col-6 col-md-6 col-sm-6">Stars:</span>
+                  <select formControlName="stars" class="col-6 col-md-6 col-sm-6" name="" id="">
+                    <option value="*">&#9733;</option>
+                    <option value="**">&#9733;&#9733;</option>
+                    <option value="***">&#9733;&#9733;&#9733;</option>
+                    <option value="****">&#9733;&#9733;&#9733;&#9733;</option>
+                    <option value="*****">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+                  </select>
+              </div>
+            </div>
+            <button [disabled]="!restaurantForm.valid" type="submit" class="btn">{{actionType}}</button>
+            <button class="btn cancel">Cancel</button>
+          </form>
+      </div>
 </div>

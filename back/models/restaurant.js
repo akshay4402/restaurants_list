@@ -16,8 +16,6 @@ const resData = new mongoose.Schema ({
         email: String,
         website: String,
     },
-    working_hours: Array,
-    working_days: Array,
     type: String,
     vegOrNon: String,
     stars: String,

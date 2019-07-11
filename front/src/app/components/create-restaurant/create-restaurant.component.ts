@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { AppService } from '../../services/app.service.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-restaurant',
@@ -10,46 +12,62 @@ import { AppService } from '../../services/app.service.service';
 export class CreateRestaurantComponent implements OnInit {
 
   public restaurantForm: FormGroup;
+  id: String;
+  actionType = 'Add';
 
 
-  constructor(private _fb: FormBuilder, private appService: AppService) { }
+  constructor(private _fb: FormBuilder, private toastr: ToastrService, private appService: AppService, private router: Router) { }
 
   ngOnInit() {
   // initaiate form values
-    this.restaurantForm = this.initForm({});
+  this.restaurantForm = this.initForm({});
+  if (this.router.url.split('/')[1] === 'edit') {
+    this.actionType = 'Edit';
+    this.appService.editRestaurentVal({id: this.router.url.split('/')[2]}).subscribe(val => {
+    this.id = this.router.url.split('/')[2];
+    this.restaurantForm = this.initForm(val[0]);
+    });
+  } else {
+  this.restaurantForm = this.initForm({});
+  }
   }
   // initaiate form values
   initForm(val: any) {
     return this._fb.group({
-      name: [val.name ? val.name : ''],
+      name: [val.name ? val.name : '' , Validators.required],
       address: this._fb.group({
-        line1: [ val.address && val.address.line1 ? val.address.line1 : ''],
-        line2: [val.address && val.address.line2 ? val.address.line2 : ''],
-        street: [val.address && val.address.street ? val.address.street : ''],
-        postalCode: [val.address && val.address.postalCode ? val.address.postalCode : ''],
-        city: [val.address && val.address.city ? val.address.city : ''],
-        state: [val.address && val.address.state ? val.address.state : ''],
-        country: [val.address && val.address.country ? val.address.country : ''],
-        telephone: [val.address && val.address.telephone ? val.address.telephone : ''],
+        line1: [ val.address && val.address.line1 ? val.address.line1 : '', Validators.required],
+        line2: [val.address && val.address.line2 ? val.address.line2 : '' , Validators.required],
+        street: [val.address && val.address.street ? val.address.street : '' , Validators.required],
+        postalCode: [val.address && val.address.postalCode ? val.address.postalCode : '' , Validators.required],
+        city: [val.address && val.address.city ? val.address.city : '' , Validators.required],
+        state: [val.address && val.address.state ? val.address.state : '', Validators.required],
+        country: [val.address && val.address.country ? val.address.country : '', Validators.required],
+        telephone: [val.address && val.address.telephone ? val.address.telephone : '', Validators.required],
         fax: [val.address && val.address.fax ? val.address.fax : ''],
         email: [val.address && val.address.email ? val.address.email : ''],
         website: [ val.address && val.address.website ? val.address.website : '']
       }),
-      working_hours: [val.working_hours ? val.working_hours : []],
-      working_days: [val.working_days ? val.working_days : []],
-      type: [val.type ? val.type : ''],
+      type: [val.type ? val.type : 'fast', Validators.required ],
       vegOrNon: [val.vegOrNon ? val.vegOrNon : ''],
-      stars: [val.stars ? val.stars : ''],
-      created_at: [ val.created_at ? val.created_at : ''],
-      updated_at: [val.updated_at ? val.updated_at : '']
+      stars: [val.stars ? val.stars : '*'],
     });
   }
 
   onFormSubmit(pForm) {
+    if (this.router.url.split('/')[1] === 'edit') {
+      pForm.value['edit'] = true;
+      pForm.value._id = this.id;
+    }
     console.log(pForm.value);
     this.appService.saveRestaurant(pForm.value).subscribe(val => {
-      console.log(val);
+    // if (val + '' === 'success') {
+    //   this.toastr.info(`Restaurant Created successfully`, 'Success!');
+    // } else {
+    //   this.toastr.error('Something went wrong', 'Error');
+    // }
     });
+    this.router.navigateByUrl('/list');
   }
 
 }

@@ -17,6 +17,33 @@ export class AppService {
 
   constructor( public http: HttpClient) { }
 
+
+  deleteRestaurants(Pval) {
+    return this.http.post(`${API}/deleteRestaurent`, Pval)
+    .pipe(
+    switchMap((result: Response) => {
+        return of(result);
+    }), catchError((e: Error) => {
+      return of({type: 'ERROR', payload: e});
+    }
+    )
+    );
+  }
+
+
+  editRestaurentVal(Pval) {
+    return this.http.post(`${API}/editRestaurent`, Pval)
+    .pipe(
+    switchMap((result: Response) => {
+        return of(result);
+    }), catchError((e: Error) => {
+      return of({type: 'ERROR', payload: e});
+    }
+    )
+    );
+  }
+
+
   getRestaurants() {
     return this.http.post(`${API}/getRestaurentlist`, { })
     .pipe(

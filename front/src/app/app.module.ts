@@ -11,6 +11,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AppService } from './services/app.service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -22,6 +25,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PageNotFoundComponent
   ],
   imports: [
+    ToastrModule.forRoot({timeOut: 3000,
+      preventDuplicates: true}),
+    NgxPaginationModule,
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

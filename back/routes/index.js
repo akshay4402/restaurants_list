@@ -7,7 +7,7 @@ const resController = require('../controllers/restaurantController');
 
 router.post('/getRestaurentlist', resController.list); 
 router.post('/addRestaurent', resController.add); 
-
-
+router.post('/editRestaurent', resController.editVal); 
+router.post('/deleteRestaurent', resController.delete); 
 
 module.exports = router;
