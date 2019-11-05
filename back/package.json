@@ -22,7 +22,7 @@
     "express-fileupload": "^0.3.0",
     "express-session": "1.15.1",
     "express-validator": "3.1.2",
-    "mongoose": "^4.8.7",
+    "mongoose": "^5.7.8",
     "mongoose-mongodb-errors": "0.0.2",
     "request": "^2.87.0",
     "dotenv": "4.0.0",
